@@ -92,7 +92,7 @@ img{
         background-position: center;
     }
     .navbar-brand img{
-        border:8px solid var(--color-brand)
+        border:2px solid var(--color-brand);
     }
     /* content wrapper*/
     #content-wrapper{
