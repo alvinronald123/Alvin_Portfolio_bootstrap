@@ -3,544 +3,395 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
-    <link rel="icon" href="assets/images/ALVIN.jpeg" style="height: 100%; width: 100%;">
-    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./assets/css/aos.css">
-    <link rel="stylesheet" href="./assets/css/line-awesome.min.css">
-    <link rel="stylesheet" href="./assets/css/style.css">
+    <title>Queen of Martyrs High School - Voting System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"], select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #2c3e50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #34495e;
+        }
+        .error {
+            color: red;
+            margin-top: 10px;
+        }
+        .hidden {
+            display: none;
+        }
+        .results-dashboard {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f8f9f9;
+            border-radius: 8px;
+        }
+        .candidate-results {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: white;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .progress-bar {
+            background-color: #e9ecef;
+            height: 20px;
+            border-radius: 10px;
+            margin-top: 5px;
+        }
+        .progress {
+            background-color: #2c3e50;
+            height: 100%;
+            border-radius: 10px;
+            transition: width 0.3s ease;
+        }
+        .winner {
+            background-color: #28a745;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            margin-left: 10px;
+        }
+        /* Table Styles */
+        .voting-record {
+            margin-top: 40px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: white;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #2c3e50;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+        .timestamp {
+            font-size: 0.85em;
+            color: #666;
+        }
+        .section-title {
+            text-align: center;
+            color: #2c3e50;
+            margin: 30px 0;
+            font-size: 24px;
+            font-weight: bold;
+        }
+    </style>
 </head>
-<body data-bs-spy="scroll" data-bs-target=".navbar">
-    <!--NAV BAR-->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-        <div class="container flex-lg-column">
-            <a class=" navbar-brand mx-lg-auto mb-lg-4 d-flex justify-content-center align-items-center" href="#">
-                <span class="h3 fw-bold d-block d-lg-none">ALVIN RONALD@123</span>
-                <img src="./assets/images/five.jpeg" class="d-none d-lg-block " >
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
-            aria-controls="navbarNav" 
-            aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto flex-lg-column text-lg-center">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#home"> HOME</a>
+<body>
+    <div class="container">
+        <h1>Queen of Martyrs High School</h1>
+        <h2>2025 Elections Voting Panel</h2>
 
-                    </li> 
-                    <li class="nav-item">
-                        <a class="nav-link" href="#services"> SERVICES</a>
-
-                    </li> 
-                    <li class="nav-item">
-                        <a class="nav-link" href="#work"> WORK</a>
-
-                    </li> 
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about"> ABOUT</a>
-
-                    </li> 
-                    <li class="nav-item">
-                        <a class="nav-link" href="#reviews"> REVIEWS</a>
-
-                    </li> 
-                    <li class="nav-item">
-                        <a class="nav-link" href="#blog"> BLOG</a>
-
-                    </li> 
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact"> CONTACT</a>
-
-                    </li> 
-
-
-
-
-
-
-
-                </ul>
-
+        <!-- Registration Form -->
+        <div id="registrationForm">
+            <div class="form-group">
+                <label for="voterName">Your Full Name:</label>
+                <input type="text" id="voterName" required>
             </div>
+            <div class="form-group">
+                <label for="class">Your Class:</label>
+                <input type="text" id="class" required>
+            </div>
+            <div class="form-group">
+                <label for="classColor">Class Color:</label>
+                <input type="text" id="classColor" required>
+            </div>
+            <button onclick="startVoting()">Start Voting</button>
         </div>
-    </nav>
 
-
-
-     <!--NAV BAR-->
-
-      <!-- CONTENT WRAPPER-->
-      <div id="content-wrapper">
-
-        <!--HOME-->
-        <section id="home" class="full-height px-lg-5">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-10">
-                        <h1 class="display-4 fw-bold" data-aos="fade-up"> I'M A <span class="text-brand">STARTING  FULLSTACK DEVELOPER </span> FROM UGANDA</h1>
-                        <p class="lead mt-4 mb-5" data-aos="fade-up" data-aos-delay="300">i am Alvin Ronald, And am a begining full stack developer with a 
-                            mind set of various programming languages </p>
-                          <div data-aos="fade-up" data-aos-delay="600">
-                            <a href="#work" class="btn btn-brand me-5"> Explore My Work</a>
-                            <a href="#" class="link-custom"> Call: (256) 701651791</a>
-                          </div>
-
-                    </div>
-
-                </div>
-
+        <!-- Voting Form -->
+        <div id="votingForm" class="hidden">
+            <div class="form-group">
+                <label>President:</label>
+                <select id="president">
+                    <option value="">Select President</option>
+                    <option value="KESA SHADIR">KESA SHADIR</option>
+                    <option value="NAKITO CAROL">NAKITO CAROL</option>
+                </select>
             </div>
-
-        </section>
-        <!--HOME-->
-
-            <!--service-->
-        <section id="services" class="full-height px-lg-5">
-            <div class="container">
-
-                <div class="row pb-4" data-aos="fade-up">
-                    <div class="col-lg-8">
-                        <h6 class="text-brand">SERVICES</h6>
-                        <h1>Services That I Provide ..</h1>
-                    </div>
-                </div>
-                
-                <div class="row gy-5">
-
-                    <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
-                        <div class="service p-4 bg-base rounded-4 shadow-effect">
-                            <div class="iconbox rounded-4">
-                                <i class="las la-feather"></i>
-                            </div>
-                            <h4 class="mt-4 mb-2">Branding</h4>
-                            <p>I craft high-performing and delightful experiences tailored and conversion-focused</p>
-                            <a href="#" class="link-custom">Read More</a>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4" data-aos="fade-up" data-aos-delay="600" >
-                        <div class="service p-4 bg-base rounded-4 shadow-effect">
-                            <div class="iconbox rounded-4">
-                                <i class="las la-pencil-ruler"></i>
-                            </div>
-                            <h4 class="mt-4 mb-2">Branding</h4>
-                            <p>I craft high-performing and delightful experiences tailored and conversion-focused</p>
-                            <a href="#" class="link-custom">Read More</a>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4" data-aos="fade-up" data-aos="fade-up" data-aos-delay="900">
-                        <div class="service p-4 bg-base rounded-4 shadow-effect">
-                            <div class="iconbox rounded-4">
-                                <i class="las la-laptop-code"></i>
-                            </div>
-                            <h4 class="mt-4 mb-2">Branding</h4>
-                            <p>I craft high-performing and delightful experiences tailored and conversion-focused</p>
-                            <a href="#" class="link-custom">Read More</a>
-                        </div>
-                    </div>
-              
-
-                </div>
+            <div class="form-group">
+                <label>Speaker:</label>
+                <select id="speaker">
+                    <option value="">Select Speaker</option>
+                    <option value="KATO MARTIN">KATO MARTIN</option>
+                    <option value="KAYIGA JANSSENS">KAYIGA JANSSENS</option>
+                </select>
             </div>
-
-        </section>
-        <!--service-->
-
-        <!--work-->
-        <section id="work" class="full-height px-lg-5">
-            <div class="container">
-
-                <div class="row pb-4" data-aos="fade-up">
-                    <div class="col-lg-8">
-                        <h6 class="text-brand">WORK</h6>
-                        <h1>My Recent Projects ..</h1>
-                    </div>
-                </div>
-
-                <div class="row gy-5">
-
-                    <div class="col-md-6" data-aos="fade-up">
-                        <div class="card-custom rounded-4 bg-base shadow-effect">
-                            <div class="card-custom-image rounded-4">
-                                <img class="rounded-4" src="assets/images/one.png" alt="">
-                            </div>
-                            <div class="card-custom-content p-4">
-                                <h4>Startup Landing Page</h4>
-                                <p>Innovation that exceeds expectations. Astra is a true template equiqed with
-                                     all the elements you could ever need to put together</p>
-                                     <a href="#" class="link-custom"> Read More </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
-                        <div class="card-custom rounded-4 bg-base shadow-effect">
-                            <div class="card-custom-image rounded-4">
-                                <img class="rounded-4" src="assets/images/one.png" alt="">
-                            </div>
-                            <div class="card-custom-content p-4">
-                                <h4>Startup Landing Page</h4>
-                                <p>Innovation that exceeds expectations. Astra is a true template equiqed with
-                                     all the elements you could ever need to put together</p>
-                                     <a href="#" class="link-custom"> Read More </a>
-                            </div>
-                        </div>
-                    </div>
-
-                      <div class="col-md-6" data-aos="fade-up" data-aos-delay="600">
-                        <div class="card-custom rounded-4 bg-base shadow-effect">
-                            <div class="card-custom-image rounded-4">
-                                <img class="rounded-4" src="assets/images/one.png" alt="">
-                            </div>
-                            <div class="card-custom-content p-4">
-                                <h4>Startup Landing Page</h4>
-                                <p>Innovation that exceeds expectations. Astra is a true template equiqed with
-                                     all the elements you could ever need to put together</p>
-                                     <a href="#" class="link-custom"> Read More </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6" data-aos="fade-up" data-aos-delay="900">
-                        <div class="card-custom rounded-4 bg-base shadow-effect">
-                            <div class="card-custom-image rounded-4">
-                                <img class="rounded-4" src="assets/images/one.png" alt="">
-                            </div>
-                            <div class="card-custom-content p-4">
-                                <h4>Startup Landing Page</h4>
-                                <p>Innovation that exceeds expectations. Astra is a true template equiqed with
-                                     all the elements you could ever need to put together</p>
-                                     <a href="#" class="link-custom"> Read More </a>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
+            <div class="form-group">
+                <label>Secretary:</label>
+                <select id="secretary">
+                    <option value="">Select Secretary</option>
+                    <option value="STANLEY WILLIAMS">STANLEY WILLIAMS</option>
+                </select>
             </div>
-
-        </section>
-        <!--work-->
-
-           <!--About-->
-           <section id="about" class="full-height px-lg-5">
-            <div class="container">
-
-                <div class="row pb-4" data-aos="fade-up">
-                    <div class="col-lg-8">
-                        <h6 class="text-brand">About</h6>
-                        <h1>My Education And experiences ..</h1>
-                    </div>
-                </div>
-                <div class="row gy-5">
-                    <div class="col-lg-6">
-                        <h3 class="mb-4" data-aos="fade-up" data-aos-delay="300">Education</h3>
-                        <div class="row gy-4">
-
-                         <div class="col-12"  data-aos="fade-up" data-aos-delay=600">
-                            <div class="bg-base p-4 rounded-4 shadow-effect">
-                                <h4>Master of Software Engineering</h4>
-                                <p class="text-brand mb-2">DE Mars University Ventrson Bay (2015-2020)</p>
-                                <p class="mb-0">All we are more and design lorem ipsum dolor
-                                    creativity sit amet consectetur adipisicing elit
-                                </p>
-
-                            </div>
-                         </div>
-
-                         <div class="col-12"  data-aos="fade-up" data-aos-delay=600">
-                            <div class="bg-base p-4 rounded-4 shadow-effect">
-                                <h4>Master of Software Engineering</h4>
-                                <p class="text-brand mb-2">DE Mars University Ventrson Bay (2015-2020)</p>
-                                <p class="mb-0">All we are more and design lorem ipsum dolor
-                                    creativity sit amet consectetur adipisicing elit
-                                </p>
-
-                            </div>
-                         </div>
-
-                         <div class="col-12"  data-aos="fade-up" data-aos-delay=600">
-                            <div class="bg-base p-4 rounded-4 shadow-effect">
-                                <h4>Master of Software Engineering</h4>
-                                <p class="text-brand mb-2">DE Mars University Ventrson Bay (2015-2020)</p>
-                                <p class="mb-0">All we are more and design lorem ipsum dolor
-                                    creativity sit amet consectetur adipisicing elit
-                                </p>
-
-                            </div>
-                         </div>
-
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <h3 class="mb-4" data-aos="fade-up" data-aos-delay="300">Experiences</h3>
-                        <div class="row gy-4">
-
-                         <div class="col-12"  data-aos="fade-up" data-aos-delay=600">
-                            <div class="bg-base p-4 rounded-4 shadow-effect">
-                                <h4>Master of Software Engineering</h4>
-                                <p class="text-brand mb-2">DE Mars University Ventrson Bay (2015-2020)</p>
-                                <p class="mb-0">All we are more and design lorem ipsum dolor
-                                    creativity sit amet consectetur adipisicing elit
-                                </p>
-
-                            </div>
-                         </div>
-
-                         <div class="col-12"  data-aos="fade-up" data-aos-delay=600">
-                            <div class="bg-base p-4 rounded-4 shadow-effect">
-                                <h4>Master of Software Engineering</h4>
-                                <p class="text-brand mb-2">DE Mars University Ventrson Bay (2015-2020)</p>
-                                <p class="mb-0">All we are more and design lorem ipsum dolor
-                                    creativity sit amet consectetur adipisicing elit
-                                </p>
-
-                            </div>
-                         </div>
-
-                         <div class="col-12"  data-aos="fade-up" data-aos-delay=600">
-                            <div class="bg-base p-4 rounded-4 shadow-effect">
-                                <h4>Master of Software Engineering</h4>
-                                <p class="text-brand mb-2">DE Mars University Ventrson Bay (2015-2020)</p>
-                                <p class="mb-0">All we are more and design lorem ipsum dolor
-                                    creativity sit amet consectetur adipisicing elit
-                                </p>
-
-                            </div>
-                         </div>
-
-                        </div>
-                    </div>
-                </div>
+            <div class="form-group">
+                <label>Treasurer:</label>
+                <select id="treasurer">
+                    <option value="">Select Treasurer</option>
+                    <option value="KATEREGGA DERRICK">KATEREGGA DERRICK</option>
+                </select>
             </div>
+            <button onclick="submitVote()">Submit Vote</button>
+            <div id="voteMessage" class="error"></div>
+        </div>
 
-           </section>
-           <!--About-->
+        <!-- Results Dashboard -->
+        <div id="resultsDashboard" class="results-dashboard">
+            <h3>Live Election Results</h3>
+            <div id="totalVotes" style="text-align: center; margin-bottom: 20px;"></div>
+            
+            <h4>President Results</h4>
+            <div id="presidentResults"></div>
+            
+            <h4>Speaker Results</h4>
+            <div id="speakerResults"></div>
+            
+            <h4>Secretary Results</h4>
+            <div id="secretaryResults"></div>
+            
+            <h4>Treasurer Results</h4>
+            <div id="treasurerResults"></div>
+        </div>
+    </div>
 
-           <!--Reviews-->
-           <section id="reviews" class="full-height px-lg-5">
-            <div class="container">
+    <!-- Complete Voting Record Table -->
+    <div class="voting-record">
+        <h2 class="section-title">Complete Voting Record</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Voter Name</th>
+                    <th>Class</th>
+                    <th>Class Color</th>
+                    <th>President</th>
+                    <th>Speaker</th>
+                    <th>Secretary</th>
+                    <th>Treasurer</th>
+                    <th>Time of Vote</th>
+                </tr>
+            </thead>
+            <tbody id="votingTableBody">
+                <!-- Voting records will be inserted here -->
+            </tbody>
+        </table>
+    </div>
 
-                <div class="row pb-4" data-aos="fade-up">
-                    <div class="col-lg-8">
-                        <h6 class="text-brand">REVIEWS</h6>
-                        <h1>What Our Subscribers Say ..</h1>
+    <script>
+        // Initialize from localStorage or create new arrays
+        let votes = JSON.parse(localStorage.getItem('votes') || '[]');
+        let voters = new Set(JSON.parse(localStorage.getItem('voters') || '[]'));
+
+        // Update localStorage
+        function updateStorage() {
+            localStorage.setItem('votes', JSON.stringify(votes));
+            localStorage.setItem('voters', JSON.stringify([...voters]));
+        }
+
+        // Load existing votes on page load
+        window.onload = function() {
+            updateVotesList();
+            updateResults();
+            document.querySelector('.voting-record').style.display = 'block';
+        };
+
+        function startVoting() {
+            const name = document.getElementById('voterName').value.trim();
+            const className = document.getElementById('class').value.trim();
+            const classColor = document.getElementById('classColor').value.trim();
+
+            if (!name || !className || !classColor) {
+                alert('Please fill in all fields');
+                return;
+            }
+
+            if (voters.has(name)) {
+                alert('You have already voted!');
+                return;
+            }
+
+            document.getElementById('registrationForm').classList.add('hidden');
+            document.getElementById('votingForm').classList.remove('hidden');
+            document.getElementById('resultsDashboard').classList.remove('hidden');
+        }
+
+        function submitVote() {
+            const name = document.getElementById('voterName').value.trim();
+            const className = document.getElementById('class').value.trim();
+            const classColor = document.getElementById('classColor').value.trim();
+            const president = document.getElementById('president').value;
+            const speaker = document.getElementById('speaker').value;
+            const secretary = document.getElementById('secretary').value;
+            const treasurer = document.getElementById('treasurer').value;
+
+            if (!president || !speaker || !secretary || !treasurer) {
+                document.getElementById('voteMessage').textContent = 'Please vote for all positions';
+                return;
+            }
+
+            if (voters.has(name)) {
+                document.getElementById('voteMessage').textContent = 'You have already voted!';
+                return;
+            }
+
+            // Record vote
+            const vote = {
+                voter: name,
+                class: className,
+                classColor: classColor,
+                votes: {
+                    president,
+                    speaker,
+                    secretary,
+                    treasurer
+                },
+                timestamp: new Date().toLocaleString()
+            };
+
+            votes.push(vote);
+            voters.add(name);
+
+            // Update localStorage
+            updateStorage();
+
+            // Update displays
+            updateResults();
+            updateVotesList();
+
+            // Reset and hide voting form
+            document.getElementById('votingForm').classList.add('hidden');
+            document.getElementById('voteMessage').textContent = '';
+            alert('Thank you for voting!');
+            
+            // Scroll to voting record
+            document.querySelector('.voting-record').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function updateVotesList() {
+            const tableBody = document.getElementById('votingTableBody');
+            tableBody.innerHTML = votes.map(vote => `
+                <tr>
+                    <td>${vote.voter}</td>
+                    <td>${vote.class}</td>
+                    <td>${vote.classColor}</td>
+                    <td>${vote.votes.president}</td>
+                    <td>${vote.votes.speaker}</td>
+                    <td>${vote.votes.secretary}</td>
+                    <td>${vote.votes.treasurer}</td>
+                    <td class="timestamp">${vote.timestamp}</td>
+                </tr>
+            `).join('');
+        }
+
+        function updateResults() {
+            const totalVotes = votes.length;
+            document.getElementById('totalVotes').textContent = `Total Votes Cast: ${totalVotes}`;
+
+            // Update results for each position
+            updatePositionResults('president', ['KESA SHADIR', 'NAKITO CAROL']);
+            updatePositionResults('speaker', ['KATO MARTIN', 'KAYIGA JANSSENS']);
+            updatePositionResults('secretary', ['STANLEY WILLIAMS']);
+            updatePositionResults('treasurer', ['KATEREGGA DERRICK']);
+        }
+
+        function updatePositionResults(position, candidates) {
+            const results = document.getElementById(`${position}Results`);
+            const positionVotes = {};
+            candidates.forEach(candidate => {
+                positionVotes[candidate] = 0;
+            });
+
+            // Count votes
+            votes.forEach(vote => {
+                const candidate = vote.votes[position];
+                if (positionVotes.hasOwnProperty(candidate)) {
+                    positionVotes[candidate]++;
+                }
+            });
+
+            // Find winner
+            let maxVotes = 0;
+            let winner = '';
+            Object.entries(positionVotes).forEach(([candidate, voteCount]) => {
+                if (voteCount > maxVotes) {
+                    maxVotes = voteCount;
+                    winner = candidate;
+                }
+            });
+
+            // Generate HTML
+            results.innerHTML = Object.entries(positionVotes).map(([candidate, voteCount]) => {
+                const percentage = votes.length > 0 ? (voteCount / votes.length) * 100 : 0;
+                return `
+                    <div class="candidate-results">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <strong>${candidate}</strong>
+                            <span>${voteCount} votes (${percentage.toFixed(1)}%) 
+                                ${candidate === winner && voteCount > 0 ? '<span class="winner">Leading</span>' : ''}
+                            </span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: ${percentage}%"></div>
+                        </div>
                     </div>
-                </div>
-                <div class="row gy-5">
-                    <div class="col-md-4 data" data-aos="flip-left">
-
-                       <div class="review shadow-effect bg-base p-4 rounded-4">
-                        <div class="text-brand h3">
-                            <i class="las la-star"></i>
-                            <i class="las la-star"></i>
-                            <i class="las la-star"></i>
-                            <i class="las la-star"></i>
-                            <i class="las la-star"></i>
-                            <i class="las la-star"></i>
-                        </div>
-                        <p class="my-3">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                             accusamus, iste odio non officia!</p>
-                             <div class="person">
-                                <h5 class="mb-0"> FIK KIFULE</h5> 
-                                <p class="mb-0">Twitter</p>
-
-                             </div>
-
-                       </div>
-
-                    </div>
-
-                    <div class="col-md-4 data" data-aos="flip-left" data-aos-delay="300">
-
-                        <div class="review  shadow-effect bg-base p-4 rounded-4">
-                         <div class="text-brand h3">
-                             <i class="las la-star"></i>
-                             <i class="las la-star"></i>
-                             <i class="las la-star"></i>
-                             <i class="las la-star"></i>
-                             <i class="las la-star"></i>
-                             <i class="las la-star"></i>
-                         </div>
-                         <p class="my-3">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                              accusamus, iste odio non officia!</p>
-                              <div class="person">
-                                 <h5 class="mb-0"> FIK KIFULE</h5> 
-                                 <p class="mb-0">Twitter</p>
- 
-                              </div>
- 
-                        </div>
- 
-                     </div>
-
-                     <div class="col-md-4 data" data-aos="flip-left" data-aos-delay="600">
-
-                        <div class="review  shadow-effect bg-base p-4 rounded-4">
-                         <div class="text-brand h3">
-                             <i class="las la-star"></i>
-                             <i class="las la-star"></i>
-                             <i class="las la-star"></i>
-                             <i class="las la-star"></i>
-                             <i class="las la-star"></i>
-                             <i class="las la-star"></i>
-                         </div>
-                         <p class="my-3">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                              accusamus, iste odio non officia!</p>
-                              <div class="person">
-                                 <h5 class="mb-0"> FIK KIFULE</h5> 
-                                 <p class="mb-0">Twitter</p>
- 
-                              </div>
- 
-                        </div>
- 
-                     </div>
-
-                </div>
-              
-            </div>
-
-           </section>
-
-           <!--Reviews-->
-
-              <!--Blog-->
-           <section id="blog" class="full-height px-lg-5">
-            <div class="container">
-                <div class="row pb-4" data-aos="fade-up">
-                    <div class="col-lg-8">
-                        <h6 class="text-brand">BLOG</h6>
-                        <h1>My Blog Posts ..</h1>
-                    </div>
-                </div>
-                <div class="row gy-4">
-
-                    <div class="col-md-4"  data-aos="fade-down">
-                        <div class="card-custom rounded-4 bg-base shadow-effect">
-                            <div class="card-custom-image rounded-4">
-                                <img class="rounded-4" src="assets/images/two.png" alt="">
-                            </div>
-                            <div class="card-custom-content p-4">
-                                <p class="text-brand mb-2">20 July, 2023</p>
-                                <h4 class="mb-4 ">Desigh a creative school website using web development tools</h4>
-                               
-                                     <a href="#" class="link-custom"> Read More </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4"  data-aos="fade-down" data-aos-delay="300">
-                        <div class="card-custom rounded-4 bg-base shadow-effect">
-                            <div class="card-custom-image rounded-4">
-                                <img class="rounded-4" src="assets/images/four.png" alt="">
-                            </div>
-                            <div class="card-custom-content p-4">
-                                <p class="text-brand mb-2">20 July, 2023</p>
-                                <h4 class="mb-4 ">Desigh a creative school website using web development tools</h4>
-                               
-                                     <a href="#" class="link-custom"> Read More </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4"  data-aos="fade-down" data-aos-delay="600">
-                        <div class="card-custom rounded-4 bg-base shadow-effect">
-                            <div class="card-custom-image rounded-4">
-                                <img class="rounded-4" src="assets/images/three.png" alt="">
-                            </div>
-                            <div class="card-custom-content p-4">
-                                <p class="text-brand mb-2">20 July, 2023</p>
-                                <h4 class="mb-4 ">Desigh a creative school website using web development tools</h4>
-                               
-                                     <a href="#" class="link-custom"> Read More </a>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-           </section>
-              <!--Blog-->
-
-                <!--contact_us-->
-                <section id="contact" class="full-height px-lg-5">
-                    <div class="container">
-                        <div class="row justify-content-center text-center ">
-                            <div class="col-lg-8 pb-4s"  data-aos="fade-up" >
-                                <h6 class="text-brand">CONTACT_US</h6>
-                                <h1>Interested in working together ?? Let's talk ..</h1>
-                            </div>
-                           <div class="col-lg-8"  data-aos="fade-up" data-aos-delay="300">
-                            <form action="#" class="row gy-lg-3 gy-3">
-                                <div class="form-group col-md-6">
-                                    <input type="text" class="form-control" placeholder="Enter Your First Name">
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <input type="text" class="form-control" placeholder="Enter Your Second Name">
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <input type="number" class="form-control" placeholder="Enter Your Number(+256--)">
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <input type="text" class="form-control" placeholder="Enter Your Country">
-                                </div>
-                                <div class="form-group col-md-12">
-                                    <input type="email" class="form-control" placeholder="Enter Your Email">
-                                </div>
-                                <div class="form-group col-md-12">
-                                    <input type="text" class="form-control" placeholder="Enter Your Area Of Interest">
-                                </div>
-                                <div class="form-group col-md-12">
-                                    <textarea name="" rows="5" class="form-control" placeholder="Enter Your Message "></textarea>
-                                </div>
-                                <div class="form-group col-md-12 d-grid">
-                                   <button type="submit" class="btn btn-brand">Contact Me</button>
-                                </div>
-                            </form>
-                           </div>
-                        </div>
-                    </div>
-                </section>
-                   <!--contact_us-->
-                         
-                    <!--footer-->
-                    <footer class="py-5 px-lg-5">
-                        <div class="container">
-                            <div class="row gy-4 justify-content-between">
-                                <div class="col-auto">
-                                    <p class="mb-0">Copyright</p>
-                                </div>
-                                <div class="col-auto">
-                                    <div class="social-icons">
-                                        <a href="#"> <i class="lab la-twitter"> </i> </a>
-                                        <a href="#"> <i class="lab la-instagram"> </i> </a>
-                                        <a href="#"> <i class="lab la-facebook"> </i> </a>
-                                        <a href="#"> <i class="lab la-github"> </i> </a>
-                                        <a href="#"> <i class="lab la-whatsapp"> </i> </a>
-                                        <a href="#"> <i class="lab la-telegram"> </i> </a>
-                                        
-                                        <a href="#"> <i class="lab la-youtube"> </i> </a>
-                                    
-                                        <a href="#"> <i class="lab la-snapchat"> </i> </a>
-                                        <a href="#"> <i class="lab la-linkedin"> </i> </a>
-                                        <a href="#"> <i class="lab la-dribbble"> </i> </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </footer>
-                    <!--footer-->
-
-      </div>
-      <!-- CONTENT WRAPPER-->
-    <script src="./assets/js/bootstrap.bundle.min.js"></script>
-    <script src="./assets/js/aos.js"></script>
-    <script src="./assets/js/main.js"></script>
+                `;
+            }).join('');
+        }
+    </script>
 </body>
-
 </html>
